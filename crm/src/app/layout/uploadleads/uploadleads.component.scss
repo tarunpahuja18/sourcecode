@@ -1,0 +1,56 @@
+.Page_Content_Right{
+    background: #fff;
+    float:left;
+    width:100%;
+    padding: 10px;
+    -webkit-border-radius:6px;
+}
+.form-group{
+    .control-label{
+        font-weight: 600;
+        float: left;
+        width:100%;
+    }
+    input{
+    float: left;
+    width: 70%;
+    }
+}
+.Save_Btn{
+    background: #b92d25;
+    border: 1px solid #b92d25;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 3px 10px;
+}
+.Save_Btn:focus{
+ box-shadow: none;
+ -webkit-box-shadow:none;
+}
+.btn-primary:not([disabled]):not(.disabled):active:focus{
+    box-shadow: none;
+    -webkit-box-shadow:none;  
+}
+.Save_Btn:hover{
+ background:#222;
+ border: 1px solid #222;
+}
+
+.left_margin_btn{
+    margin-left: 10px;
+}
+@media only screen and (min-width:320px) and (max-width:575px){
+    .Save_Btn{
+        padding: 3px 5px;
+        margin-top:5px;
+    }
+ }
+ @media only screen and (min-width:576px) and (max-width:655px){
+    .Save_Btn{
+        padding: 3px 8px;
+        font-size: 13px;
+    }
+    .left_margin_btn {
+        margin-left: 5px;
+    }
+ }

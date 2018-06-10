@@ -1,0 +1,46 @@
+<div>
+  <app-page-header>Upload Leads</app-page-header>
+  <div class="Page_Content_Right">
+  <form class="col-sm-11" name="form" (ngSubmit)="uploadFile()" #f="ngForm">
+    <div class="row">
+      <div class="col-lg-5 col-sm-6 col-xs-12">
+        <div class="form-group">
+          <label class="control-label">Upload Lead</label>
+          <input class="form-control-file" #excelFileUploader placeholder="Select File" type="file" />
+        </div>
+      </div>
+      <div class="col-lg-6 col-sm-6 col-xs-12">
+          <button type="button" type="submit" class="btn btn-primary pull-left Save_Btn" aria-expanded="false">Upload File</button>
+          <button type="button" type="button" class="btn btn-primary pull-left Save_Btn left_margin_btn" (click)="downloadFile('DownloadLeadsSample/ContactUploadTemplate.xlsx')" aria-expanded="false">Download File</button>
+      </div>
+
+      <div [hidden]="!isProcessed" class="col-lg-5 col-sm-6 col-xs-12">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Uploaded file</th>
+              <th scope="col">File with Success</th>
+              <th scope="col">File with Error</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let a of uploadResultModel; let i=index" class="table-active">
+                <td>
+                    <button type="button" type="button" class="btn btn-primary pull-left Save_Btn left_margin_btn" (click)="downloadFile(a.uploadedFilePath)" aria-expanded="false">Download File</button>
+                  </td>
+              <td>
+                <button [hidden]="!a.isSuccess" type="button" type="button" class="btn btn-primary pull-left Save_Btn left_margin_btn" (click)="downloadFile(a.successFilePath)" aria-expanded="false">Download File</button>
+                <span [hidden]="a.isSuccess">NA</span>
+              </td>
+              <td>
+                <button [hidden]="!a.isError" type="button" type="button" class="btn btn-primary pull-left Save_Btn left_margin_btn" (click)="downloadFile(a.errorFilePath)" aria-expanded="false">Download File</button>
+                <span [hidden]="a.isError">NA</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </form>
+</div>
+</div>

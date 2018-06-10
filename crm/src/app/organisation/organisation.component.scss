@@ -1,0 +1,33 @@
+﻿@import "../login/login.component.scss";
+.login-page{
+    margin:1% auto 0 !important;
+.m-icon-swapleft{
+    background: url("../../assets/Images/syncfusion-icons-black.png") !important;
+    background-position: -8px -10px !important;
+}
+.label_terms{
+    font-weight: normal;
+    float: left;
+    font-size: 13px;
+    text-align: left;
+ .checker-style{
+    float: left;
+    
+    input[type="checkbox"]{
+        margin-right: 8px;
+        margin-top: 0;
+    }
+}
+}
+.help-block{
+    color:#d9534f;
+    font-size: 12px;
+    text-align: left;
+    margin-top: 3px;
+    font-weight: 600;
+    
+}
+.Bottom_margin{
+    margin-bottom: 10px;
+}
+}

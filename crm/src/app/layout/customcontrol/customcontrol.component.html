@@ -1,0 +1,22 @@
+<div class="modal-header">
+ <h5 class="modal-title header-size label_transform">Add Controls</h5>
+   <div class="pull-right">
+     <button type="button" (click)="addNewRow()" class="btn-primary Save_Btn">Add new Row</button>
+     <button type="button" class="btn-primary Save_Btn" (click)="saveCustomControls()">Save</button>
+    </div>
+ </div> 
+ <div class="customformClass">
+<form [formGroup]="customControlForm">
+    <div formArrayName="itemRows">
+        <div *ngFor="let itemrow of customControlForm.controls.itemRows.controls; let i=index" [formGroupName]="i">
+            <div class="form-group">
+                <label class="control-label">Control Name</label>
+                <div class="InputBtn_OuterDiv">
+                <input formControlName="itemname" class="form-control">
+                  <button *ngIf="customControlForm.controls.itemRows.controls.length > 1" (click)="deleteRow(i)" class="btn btn-primary Save_Btn">Remove</button>
+                 </div> 
+            </div>
+        </div>
+    </div>
+</form>
+</div>

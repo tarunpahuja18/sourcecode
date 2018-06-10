@@ -1,0 +1,48 @@
+.Page_Content_Right{
+    background: #fff;
+    float:left;
+    width:100%;
+    padding: 10px;
+    -webkit-border-radius:6px;
+}
+.Main_Screen_Wrapper{
+    .form-control:focus{
+        box-shadow:none !important;
+    }
+    .Save_Btn{
+        background: #b92d25;
+        border: 1px solid #b92d25;
+        font-size: 15px;
+        font-weight: 500;
+    }
+    .Save_Btn:focus{
+     box-shadow: none;
+    }
+    .Save_Btn:hover{
+     background:#222;
+     border: 1px solid #222;
+    }
+    label{
+        float: left;
+        width: 100%;
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+    .radio-inline{
+        width: 20%;
+        input[type=radio]{
+            float: left;
+        }
+        span{
+            line-height: 12px;
+            float: left;
+            margin-left: 5px;
+        }
+    }
+    .has-error .help-block{
+        color: #d9534f;
+        font-size: 12px;
+        font-weight: 600;
+    }
+}

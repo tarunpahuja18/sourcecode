@@ -1,0 +1,58 @@
+﻿<div class="container-fluid login-body">
+    <div class="container">
+          <div class="login-page">
+              <div class="col-lg-12">
+                <img class="logo_Img" src="../../assets/images/Logo2.png"/>
+              </div>
+              <form name="form" (ngSubmit)="f.form.valid && save()" #f="ngForm">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group Bottom_margin" [ngClass]="{ 'has-error': f.submitted && !OrganizationName.valid }">
+                            <div class="input-icon">
+                            <i class="fa fa-user"></i>
+                          <input type="text" maxlength="30"  #OrganizationName="ngModel" required class="form-control" id="OrganizationName" name="OrganizationName" [(ngModel)]="model.OrganizationName" placeholder="Organization Name"/>
+                          <div *ngIf="f.submitted && !OrganizationName.valid" class="help-block">Name is required.</div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group Bottom_margin" [ngClass]="{ 'has-error':f.submitted && !owner.valid }" >
+                            <div class="input-icon">
+                            <i class="fa fa-user"></i>
+                          <input type="text" maxlength="30" #owner="ngModel" required id="owner" name="owner" class="form-control" [(ngModel)]="model.Owner" placeholder="Owner"/>
+                          <div *ngIf="f.submitted && !owner.valid" class="help-block">Owner is required.</div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="form-group Bottom_margin" [ngClass]="{ 'has-error':(f.submitted||email.touched)&& !email.valid }" >
+                      <div class="input-icon">
+                        <i class="fa fa-envelope"></i>
+                        <input type="text" class="form-control"  #email="ngModel" required email id="email" name="email" [(ngModel)]="model.OwnerEmail"   placeholder="Owner Email"/>
+                        <div *ngIf="(f.submitted||email.touched) && !email.valid" class="help-block">Invalid Email.</div>
+                      </div>
+                      </div>
+                    </div>
+                  <div class="col-lg-12" >
+                    <div class="form-group Bottom_margin" [ngClass]="{ 'has-error':f.submitted && !password.valid }">
+                    <div class="input-icon">
+                      <i class="fa fa-lock"></i>
+                      <input type="password" maxlength="10" #password="ngModel" required id="password" name="password" class="form-control" [(ngModel)]="model.OwnerPassword" placeholder="Owner Password"/>
+                      <div *ngIf="f.submitted && !password.valid" class="help-block">password is required.</div>
+                    </div>
+                    </div>
+                  </div> 
+                  <div class="col-lg-12">
+                    <div class="form-actions">
+                        <button class="btn pull-left" type="button" id="register-back-btn">
+                            <i class="m-icon-white m-icon-swapleft"></i> Back
+                        </button>
+                        <button class="btn green pull-right" type="submit" > Create <i class="m-icon-white"></i>  </button>
+                    </div>
+                    
+                  </div>
+                </div>
+              </form>
+          </div>
+    </div>    
+  </div>

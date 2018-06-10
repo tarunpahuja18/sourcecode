@@ -1,0 +1,85 @@
+.portlet-body{
+    margin-bottom:15px;
+    border:1px soild #dadada;
+    float: left;
+    width:100%;
+    box-shadow: 0px 1px 15px 1px rgba(69, 65, 78, 0.08);
+    background: #fff;
+    .border_right_widget{
+       border-right:1px solid #ebedf2; 
+    }
+    .widget_1 {
+        padding: 20px;
+        .widget1_item{
+            padding: 15px 0;
+            border-bottom: 1px dashed #ebedf2;
+        }
+            .align-items-center {
+                align-items: center !important;
+            }
+            .widget1_title{
+                font-size: 18px;
+                font-weight: 500;
+                margin-bottom: 0;
+                color:#3f4047;
+            }
+            .widget1_desc{
+                display: inline-block;
+                margin-top: 10px;
+                font-size: 14px;
+                font-weight: 400;
+                color:#9699a2;
+            }
+            .widget1_number{
+                font-size: 20px;
+                font-weight: 600;
+            }
+            .font-brand{
+              color:#716aca;
+            }
+            .font-danger{
+                color:#f4516c;
+            }
+            .font-success{
+                color:#34bfa3;
+            }
+        
+    }
+}
+.Bottom_Margin{
+    margin-bottom: 15px;
+}
+.sales_icon i{
+   font-size: 10em;
+   color:#34bfa3;
+   
+}
+.Save_Btn{
+    background: #b92d25;
+    border: 1px solid #b92d25;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 3px 10px;
+}
+.Save_Btn:focus{
+ box-shadow: none;
+ -webkit-box-shadow:none;
+}
+.btn-primary:not([disabled]):not(.disabled):active:focus{
+    box-shadow: none;
+    -webkit-box-shadow:none;  
+}
+.Save_Btn:hover{
+ background:#222;
+ border: 1px solid #222;
+}
+@media only screen and (min-width:992px) and (max-width:1199px){
+   .Tiles_bottom_margin{
+       margin-bottom:10px;
+   }
+}
+@media only screen and (min-width:1200px) and (max-width:1325px){
+    .fa-5x{
+        font-size: 6em;
+    }
+ }

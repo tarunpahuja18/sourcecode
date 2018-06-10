@@ -1,0 +1,20 @@
+<div class="customformClass">
+    <form [formGroup]="customControlForm" novalidate>
+        <div formArrayName="itemRows">
+            <div *ngIf="customControlForm.controls.itemRows.controls.length > 1; then thenBlock else elseBlock">
+            </div>
+            <ng-template #thenBlock>
+                <div *ngFor="let itemrow of customControlForm.controls.itemRows.controls; let i=index" [formGroupName]="i">
+                    <div class="form-group">
+                        <label class="control-label">Custom Control name</label>
+                        <input formControlName="itemname" class="form-control">
+                        <input type="hidden" formControlName="itemId" class="form-control">
+                    </div>
+                </div>
+            </ng-template>
+            <ng-template #elseBlock>
+
+            </ng-template>
+        </div>
+    </form>
+</div>

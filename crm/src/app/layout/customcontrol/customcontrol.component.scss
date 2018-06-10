@@ -1,0 +1,43 @@
+.customformClass{
+    max-height: 600px;
+    overflow-y: scroll;
+    .InputBtn_OuterDiv{
+        width:100%;
+        float: left;
+        margin-bottom: 5px;
+        .form-control{
+            width: 80%;
+            float: left;
+        }
+        .btn{
+            margin:5px 0 0 12px; 
+            float:left;
+        }
+    }
+}
+.Save_Btn{
+    background: #b92d25;
+    border: 1px solid #b92d25;
+    font-size: 15px;
+    font-weight: 500;
+    -webkit-border-radius:3px !important;
+    padding:3px 5px;
+}
+.Save_Btn:focus{
+ box-shadow: none;
+ -webkit-box-shadow:none;
+}
+.btn-primary:not([disabled]):not(.disabled):active:focus{
+    box-shadow: none;
+    -webkit-box-shadow:none;  
+}
+.Save_Btn:hover{
+ background:#222;
+ border: 1px solid #222;
+}
+.modal-header{
+    padding:0 20px 5px 0;
+}
+.header-size{
+    margin: 0;
+}

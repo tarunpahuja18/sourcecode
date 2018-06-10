@@ -1,0 +1,324 @@
+﻿<div class="Main_Screen_Wrapper">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
+            <h2 class="page-header">
+                Make calls
+            </h2>
+        </div>
+    </div>
+    <div class="Page_Content_Right">
+        <form (ngSubmit)="f.form.valid && addcontact()" #f="ngForm" shashank>
+            <div class="row">
+                <div class="col-lg-12">
+                    <button [disabled]="loading" type="submit" class="btn  btn-primary pull-right Save_Btn">Save</button>
+                </div>
+            </div>
+
+            <!-- <div class="row"> -->
+            <!-- <div class="col-lg-4"> -->
+            <!-- <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !customerNumber.valid }"> -->
+            <!-- <label>Customer Id</label> -->
+            <!-- <input type="text" pattern="[0-9]*" class="form-control" id="customerNumber" name="customerNumber" value="" [(ngModel)]="model.customerNumber" -->
+            <!-- #customerNumber="ngModel" required /> -->
+            <!-- <div *ngIf="f.submitted && !customerNumber.valid" ng-messages="ngForm.customerNumber.$error" class="help-block"> -->
+            <!-- <div ng-message="required">Customer id is required.</div> -->
+            <!-- <div ng-message="pattern">Must be a valid customer Id.</div> -->
+            <!-- </div> -->
+            <!-- </div> -->
+            <!-- </div> -->
+            <!-- </div> -->
+            <!-- 
+        <div class="row" *ngFor="let item of controlList; index as i;">
+            <div class="col-lg-4" *ngFor="let control of item.controlList; index as j;">
+                <div class="form-group"  [ngClass]="{ 'has-error': f.submitted && ! control.controlName.valid }">
+                    <label>Customer Id</label>
+                    <input type="text" pattern="[0-9]*" class="form-control" id="{{control.controlName}}" name="{{control.controlName}}" value="" [(ngModel)]="model.control.controlName"
+                        #control.controlName="ngModel" required />
+                    <div *ngIf="f.submitted && !{{control.controlName}}.valid" ng-messages="ngForm.{{control.controlName}}.$error" class="help-block">
+                        <div ng-message="required">{{control.validationMessageString}}}</div>
+                    </div>
+                </div> 
+
+
+<div [innerHTML]="control.controlHTML | safeHtml"></div>
+            </div>
+        </div> -->
+
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !customerNumber.valid }">
+                        <label>Customer Id</label>
+                        <input type="text" pattern="[0-9]*" class="form-control" id="customerNumber" name="customerNumber" value="" [(ngModel)]="model.customerNumber"
+                            #customerNumber="ngModel" required />
+                        <div *ngIf="f.submitted && !customerNumber.valid" ng-messages="ngForm.customerNumber.$error" class="help-block">
+                            <div ng-message="required">Customer id is required.</div>
+                            <div ng-message="pattern">Must be a valid customer Id.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !salespersonName.valid }">
+                        <label>Sales person</label>
+                        <input type="text" class="form-control" value="Shari Heffiner" id="salespersonName" name="salespersonName" [(ngModel)]="model.salespersonName"
+                            #salespersonName="ngModel" required/>
+                        <div *ngIf="f.submitted && !salespersonName.valid" class="help-block">sales person name is required.</div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !primaryPhone.valid }">
+                        <label>Primary Phone</label>
+                        <input type="text" pattern="[0-9]*" class="form-control" id="primaryPhone" name="primaryPhone" [(ngModel)]="model.primaryPhone"
+                            #primaryPhone="ngModel" required ng-maxlength="10" ng-minlength="10" />
+                        <div *ngIf="f.submitted && !primaryPhone.valid" ng-messages="ngForm.primaryPhone.$error" class="help-block">
+                            <div ng-message="required">Primary phone is required.</div>
+                            <div ng-message="maxlength">Must be a 10 digit phone number</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Phone Ext.</label>
+                        <input type="text" class="form-control" class="form-control" id="phoneExt" name="phoneExt" [(ngModel)]="model.phoneExt" #phoneExt="ngModel"
+                        />
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Phone Type</label>
+                        <select [(ngModel)]="phoneTypeID" id="phoneTypedd" name="phoneTypedd" class="form-control" (ngModelOptions)="{standalone: true}">
+                            <option value="1" selected>Mobile</option>
+                            <option value="2">Landline</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Decision Maker Identified</label>
+                        <label class="radio-inline">
+                            <input checked="checked" id="isDecisionMakerIdentified1" name="isDecisionMakerIdentified" type="radio" [(ngModel)]="model.isDecisionMakerIdentified"
+                                [value]="true" #isDecisionMakerIdentified="ngModel">
+                            <span>Yes</span>
+                        </label>
+                        <label class="radio-inline">
+                            <input id="isDecisionMakerIdentified2" name="isDecisionMakerIdentified" type="radio" [(ngModel)]="model.isDecisionMakerIdentified"
+                                [value]="false" #isDecisionMakerIdentified="ngModel">
+                            <span>No</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group" [ngClass]="{ 'has-error': (f.submitted  || contactEmail.touched) && !contactEmail.valid }">
+                        <label>Email Address (Primary Contact) </label>
+                        <input type="text" class="form-control" id="contactEmail" name="contactEmail" [(ngModel)]="model.contactEmail" #contactEmail="ngModel"
+                            required email/>
+                        <div *ngIf="(f.submitted || contactEmail.touched) && !contactEmail.valid" class="help-block">Invalid email.</div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>URL (Primary Contact) </label>
+                        <input type="text" class="form-control" id="contactLinkedInURL" name="contactLinkedInURL" [(ngModel)]="model.contactLinkedInURL"
+                            #contactLinkedInURL="ngModel" />
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Position (Primary Contact)</label>
+                        <input type="text" class="form-control" id="position" name="position" [(ngModel)]="model.position" #position="ngModel" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Company URL</label>
+                        <input type="url" class="form-control" id="companyURL" name="companyURL" [(ngModel)]="model.companyURL" #companyURL="ngModel"
+                        />
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Organization Name</label>
+                        <input type="text" class="form-control" id="organizationName" name="organizationName" [(ngModel)]="model.organizationName"
+                            #organizationName="ngModel" />
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Origin Adcode</label>
+                        <input type="text" class="form-control" id="originAdCode" name="originAdCode" [(ngModel)]="model.originAdCode" #originAdCode="ngModel"
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Campaign Adcode</label>
+                        <input type="text" class="form-control" id="campaignAdCode" name="campaignAdCode" [(ngModel)]="model.campaignAdCode" #campaignAdCode="ngModel"
+                        />
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Industry</label>
+                        <input type="text" class="form-control" id="industry" name="industry" [(ngModel)]="model.industry" #industry="ngModel" />
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Lead Stage</label>
+                        <input type="text" class="form-control" id="leadStage" name="leadStage" [(ngModel)]="model.leadStage" #leadStage="ngModel"
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Date of Last Contact</label>
+                        <input type="date" class="form-control" id="lastContact" name="lastContact" [ngModel]="model.lastContact | date:'yyyy-MM-dd'"
+                            (ngModelChange)="model.lastContact = $event" #lastContact="ngModel" />
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Last Step Type</label>
+                        <input type="text" class="form-control" id="lastStepType" name="lastStepType" [(ngModel)]="model.lastStepType" #lastStepType="ngModel"
+                        />
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Next Step Who</label>
+                        <input type="text" class="form-control" id="nextStepWho" name="nextStepWho" [(ngModel)]="model.nextStepWho" #nextStepWho="ngModel"
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Date of Next Step</label>
+                        <input type="date" class="form-control" id="nextStep" name="nextStep" [ngModel]="model.nextStep | date:'yyyy-MM-dd'" (ngModelChange)="model.nextStep = $event"
+                            #nextStep="ngModel" />
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Next Step Type</label>
+                        <input type="text" class="form-control" id="nextStepType" name="nextStepType" [(ngModel)]="model.nextStepType" #nextStepType="ngModel"
+                        />
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Next Step Notes</label>
+                        <input type="text" class="form-control" id="nextStepNotes" name="nextStepNotes" [(ngModel)]="model.nextStepNotes" #nextStepNotes="ngModel"
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Notes</label>
+                        <input type="text" class="form-control" id="Notes" name="Notes" [(ngModel)]="model.Notes" #Notes="ngModel" />
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Est. $ Value (one-time)</label>
+                        <input type="number" class="form-control" id="oneTimeEstimatedValue" name="oneTimeEstimatedValue" [(ngModel)]="model.oneTimeEstimatedValueNotes"
+                            #oneTimeEstimatedValue="ngModel" />
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Est. $ Value (monthly)</label>
+                        <input type="number" class="form-control" id="monthlyTimeEstimatedValue" name="monthlyTimeEstimatedValue" [(ngModel)]="model.monthlyTimeEstimatedValue"
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Est. Monthly Adspend</label>
+                        <input type="number" class="form-control" id="estimatedMonthlyAdSpend" name="estimatedMonthlyAdSpend" [(ngModel)]="model.estimatedMonthlyAdSpend"
+                            #estimatedMonthlyAdSpend="ngModel" />
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Appt Setter</label>
+                        <input type="text" class="form-control" id="apptSetter" name="apptSetter" [(ngModel)]="model.apptSetter" #apptSetter="ngModel"
+                        />
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Date of Webinar Signup</label>
+                        <input type="date" class="form-control" id="webinarSignUpDate" name="webinarSignUpDate" [ngModel]="model.webinarSignUpDate | date:'yyyy-MM-dd'"
+                            (ngModelChange)="model.webinarSignUpDate = $event" #webinarSignUpDate="ngModel" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Date of 1st Webinar</label>
+                        <input type="date" class="form-control" id="firstWebinarDate" name="firstWebinarDate" [ngModel]="model.firstWebinarDate | date:'yyyy-MM-dd'"
+                            #firstWebinarDate="ngModel" />
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Webinar Name</label>
+                        <input type="text" class="form-control" id="webinarName" name="webinarName" [(ngModel)]="model.webinarName" #webinarName="ngModel"
+                        />
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Webinar Date/Time</label>
+                        <input type="date" class="form-control" id="webinarDate" name="webinarDate" [ngModel]="model.webinarDate | date:'yyyy-MM-dd'"
+                            #webinarDate="ngModel" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Attended Webinar</label>
+                        <input type="text" class="form-control" id="attendedWebinar" name="attendedWebinar" [(ngModel)]="model.attendedWebinar" #attendedWebinar="ngModel"
+                        />
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Date of 1st Appointment</label>
+                        <input type="date" class="form-control" id="firstAppointment" name="firstAppointment" [ngModel]="model.firstAppointment | date:'yyyy-MM-dd'"
+                            #firstAppointment="ngModel" />
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Date of Sale</label>
+                        <input type="date" class="form-control" id="saleDate" name="saleDate" [ngModel]="model.saleDate | date:'yyyy-MM-dd'" #saleDate="ngModel"
+                            #saleDate="ngModel" />
+                    </div>
+                </div>
+
+            </div>
+            <app-customcontrolsave></app-customcontrolsave>
+        </form>
+    </div>
+</div>

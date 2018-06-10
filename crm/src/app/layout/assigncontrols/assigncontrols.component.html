@@ -1,0 +1,47 @@
+
+<app-page-header>Controls Configuration</app-page-header>
+<div class="Page_Content_Right">
+<div class="row">   
+    <div class="col-lg-6 col-sm-6 col-xs-6"></div> 
+    <div class="col-lg-6 col-sm-6 col-xs-12">
+     <button (click)="showDialog = !showDialog" class="btn btn-primary pull-right Save_Btn left_margin_btn">{{customControlButtontext}}</button>
+      <button type="button"  type="submit" class="btn btn-primary pull-right Save_Btn" (click)="save()" 
+        aria-expanded="false">Save</button>
+    </div>
+</div>
+<div class="MakeCalls_Grid_outer">
+    <div class="card">
+        <div class="card-body table-responsive">
+    <table class="table table-striped table-light table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Is Visible</th>
+                <th>Is Required</th>
+                <th>Sort Order</th>
+                <th>Type</th>
+            </tr>
+         </thead>
+    <tbody>
+    <tr *ngFor="let control of controls; let i = index">
+      <td >{{control.controlLabelName}}</td>
+      <!-- <td>{{control.isVisible}}</td> -->
+      <td><input  type="checkbox" class="form-control" value="" [(ngModel)]="control.isVisible"></td> 
+      <!-- <td>{{control.isRequired}}</td> -->
+      <td><input type="checkbox" class="form-control" value="" [(ngModel)]="control.isRequired"></td> 
+      <td><input type="number" class="form-control" value="" [(ngModel)]="control.sortOrder"></td> 
+      <td><input  type="text" class="form-control" value="" [(ngModel)]="control.controlType"></td> 
+      <!-- <td>{{control.sortOrder}}</td> -->
+    </tr>
+</tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+    <app-dialog [(visible)]="showDialog">
+            <app-customcontrol></app-customcontrol>
+                 <!-- <button (click)="showDialog = !showDialog" class="btn btn-primary">Close</button> -->
+        </app-dialog>
+    </div>
+
+

@@ -1,0 +1,176 @@
+<div [@routerTransition]>
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
+            <h2 class="page-header">
+                Make calls
+            </h2>
+        </div>
+    </div>
+    <div class="Page_Content_Right Height_PageContent">
+        <div class="row">
+            <div class="col-lg-6 col-sm-6 col-xs-12">
+                <input class="form-control" placeholder="Search" [(ngModel)]="searchText" (keyup)="search()" type="search" />
+            </div>
+        </div>
+
+        <div class="MakeCalls_Grid_outer" *ngIf="items!=undefined" >
+            <div class="card">
+                <div class="card-body table-responsive">
+                    <data-table id="persons-grid" [items]="items" [itemCount]="itemCount" (reload)="reloadItems($event)" (rowClick)="rowClick($event)"
+                        (rowDoubleClick)="rowDoubleClick($event)" [rowTooltip]="rowTooltip" [limit]="10" [substituteRows]="false"  >
+                        <!-- [indexColumnHeader]="'Row'"[expandableRows]="true" -->
+                        <data-table-title title=""></data-table-title>
+                        <!-- <ng-template #expandTemplate let-item="item"> Email:
+                            <div [textContent]="item.contactEmail" style="padding: 5px; color: gray"></div>
+                        </ng-template>  -->
+                        <data-table-column [property]="'customerNumber'" [visible]="controlVisisbility== undefined ?false :controlVisisbility.isCustomerNumberVisisble"
+                            width="100px" [header]="'Cust.#'" [sortable]="true" [resizable]="true">
+                        </data-table-column>
+                        <data-table-column [header]="'Call'" width="58px">
+                            <ng-template #cellTemplate let-item="item">
+                                <a href="tel:{{item.primaryPhone}}">Call</a>
+                            </ng-template>
+                        </data-table-column>
+                        <data-table-column [header]="'Add Notes'" width="110px">
+                            <ng-template #cellTemplate let-item="item">
+                                    <a href="javascript:void(0);" (click)="OpenAddNotePopup(item)">Add Notes</a>
+                                <!-- <button class="call_btn" (click)="OpenAddNotePopup(item)">Add Notes</button>-->
+                            </ng-template> 
+                        </data-table-column>
+                        <data-table-column [property]="'salespersonName'" [visible]="controlVisisbility== undefined ?false :controlVisisbility.issalespersonNameVisisble"
+                            [header]="'Salesperson'" [sortable]="true" width="145px">
+                        </data-table-column>
+
+                        <data-table-column [property]="'primaryPhone'" [visible]="controlVisisbility== undefined ?false :controlVisisbility.isprimaryPhoneVisisble"
+                            [header]="'Primary Phone'" [sortable]="true" width="160px">
+                        </data-table-column>
+
+                        <data-table-column [property]="'phoneExt'" [visible]="controlVisisbility== undefined ?false :controlVisisbility.isphoneExtVisisble"
+                            [header]="'Phone Ext.'" [sortable]="true" width="130px">
+                        </data-table-column>
+
+                        <data-table-column [property]="'phoneTypeID'" [visible]="controlVisisbility== undefined ?false :controlVisisbility.isphoneTypeIDVisisble"
+                            [header]="'Phone Type'" [sortable]="true" width="125px">
+                        </data-table-column>
+
+                        <data-table-column [property]="'isDecisionMakerIdentified'" [visible]="controlVisisbility== undefined ?false :controlVisisbility.isisDecisionMakerIdentifiedVisisble"
+                            [header]="'Decision Maker Identified'" [sortable]="true" width="255px">
+                            <ng-template #headerTemplate let-item="item">
+                                <span>isDecisionMakerIdentified</span>
+                            </ng-template>
+                            <ng-template #cellTemplate let-item="item">
+                                <span style="color: grey">
+                                    <span class="fa fa-check" *ngIf="item.isDecisionMakerIdentified"></span>
+                                    <span class="fa fa-times" *ngIf="!item.isDecisionMakerIdentified"></span>
+                                </span>
+                            </ng-template>
+
+                        </data-table-column>
+
+                        <data-table-column [property]="'primaryContact'" [visible]="controlVisisbility== undefined ?false :controlVisisbility.isprimaryContactVisisble"
+                            [header]="'Primary Contact'" [sortable]="true" width="178px">
+                        </data-table-column>
+
+
+                        <data-table-column [property]="'position'" [visible]="controlVisisbility== undefined ?false :controlVisisbility.ispositionVisisble"
+                            [header]="'Position(Primary Contact)'" [sortable]="true" width="255px">
+                        </data-table-column>
+                        <data-table-column [property]="'contactEmail'" [visible]="controlVisisbility== undefined ?false :controlVisisbility.iscontactEmailVisisble"
+                            [header]="'Email Address(Primary Contact)'" [sortable]="true" width="300px">
+                        </data-table-column>
+                        <data-table-column [property]="'contactLinkedInURL'" [visible]="controlVisisbility== undefined ?false :controlVisisbility.iscontactLinkedInURLVisisble"
+                            [header]="'URL(Primary Contact)'" [sortable]="true" width="215px">
+                        </data-table-column>
+                        <data-table-column [property]="'companyURL'" [visible]="controlVisisbility== undefined ?false :controlVisisbility.iscompanyURLVisisble"
+                            [header]="'Company URL'" [sortable]="true" width="150px">
+                        </data-table-column>
+                        <data-table-column [property]="'organizationName'" [visible]="controlVisisbility== undefined ?false :controlVisisbility.isorganizationNameVisisble"
+                            [header]="'Organization Name'" [sortable]="true" width="188px">
+                        </data-table-column>
+                        <data-table-column [property]="'originAdCode'" [visible]="controlVisisbility== undefined ?false :controlVisisbility.isoriginAdCodeVisisble"
+                            [header]="'Origin Adcode'" [sortable]="true" width="150px">
+                        </data-table-column>
+                        <data-table-column [property]="'campaignAdCode'" [visible]="controlVisisbility== undefined ?false :controlVisisbility.iscampaignAdCodeVisisble"
+                            [header]="'Campaign Adcode'" [sortable]="true" width="185px">
+                        </data-table-column>
+                        <data-table-column [property]="'industry'" [visible]="controlVisisbility== undefined ?false :controlVisisbility.isindustryVisisble"
+                            [header]="'Industry'" [sortable]="true" width="110px">
+                        </data-table-column>
+                    </data-table>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div aria-hidden="false" class="modal" id="divaddnotespopup" tabindex="-1" style="display:block;" [style.visibility]="showNotesPopup ==true   ? 'visible' : 'hidden'">
+        <div class="modal-dialog modal-align AddNotesPopup_Width">
+            <div class="modal-content modal-radius">
+                <div class="modal-header">
+                    <button data-dismiss="modal" class="fancybox-close" type="button" (click)="HideNotesPopup();">
+                        <span>x</span>
+                    </button>
+                    <h4 id="headManageReport" class="modal-title header-size label_transform">Notes</h4>
+                    <div class="pull-right">
+                        <button value="Save" class="Save_Btn" type="submit" (click)="SaveCustomerNote(myNote);">Save</button>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label">Add Notes for Customer Number</label>
+                                <input type="text" class="form-control" readonly="readonly" value="{{myNote.CustomerNumber}} " [(ngModel)]="myNote.CustomerNumber"
+                                    ngDefaultControl/>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label">Note</label>
+                                <textarea class="form-control" maxlength="2000" [(ngModel)]="myNote.Description"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label">Set Remider</label>
+                                <div class="checkbox">
+                                    <input type="checkbox" [(ngModel)]="myNote.IsReminderSet">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label">Reminder Datetime</label>
+                                <input class="form-control" type="datetime-local" [(ngModel)]="myNote.ReminderDatetimeString" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <table class="table table-striped table-light table-hover AddNotesPopup_table">
+                                <thead>
+                                    <tr>
+                                        <th>Description</th>
+                                        <th>Reminder</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let note of customerNotes">
+                                        <td>{{note.description}}</td>
+                                        <td>{{note.isReminderSet}}</td>
+                                        <td>
+                                            <span [style.visibility]="note.isReminderSet ==true && showNotesPopup ==true    ? 'visible' : 'hidden'">{{ProcessDate (note.reminderDatetime).toLocaleDateString()}} {{ProcessDate (note.reminderDatetime).toLocaleTimeString()}}</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="overlay" [style.visibility]="showOverlay ==true   ? 'visible' : 'hidden'"></div>
+</div>

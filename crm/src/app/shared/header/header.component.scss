@@ -1,0 +1,99 @@
+$topnav-background-color: #ddd;
+$header-nav-color:#ce3229;
+:host {
+    .navbar {
+        background-color: $topnav-background-color;
+        .navbar-brand {
+            color: #fff;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .nav-item > a {
+            color: $header-nav-color;
+            &:hover {
+                color: #222;
+            }
+        }
+        li.nav-item{
+            position: relative;
+        }
+        li.Today_Schedule_list{
+            position: fixed;
+            right: 8%;
+            text-align: right;
+        }
+        .Notification_Dropdown_list{
+            width:360px;
+            background:#fff;
+            box-shadow: 2px 3px 2px #999;
+            position: absolute;
+            right: 0;
+            list-style-type: none;
+            margin:0;
+            padding:10px;
+            
+            li{
+                float: left;
+                width:97%;
+                padding:5px 0;
+                text-align: left;
+            }
+            .Save_Btn{
+                background: #b92d25;
+                border: 1px solid #b92d25;
+                font-size: 15px;
+                font-weight: 500;
+                -webkit-border-radius:3px !important;
+                padding:3px 5px;
+            }
+            .Save_Btn:focus{
+             box-shadow: none;
+             -webkit-box-shadow:none;
+            }
+            .btn-primary:not([disabled]):not(.disabled):active:focus{
+                box-shadow: none;
+                -webkit-box-shadow:none;  
+            }
+            .Save_Btn:hover{
+             background:#222;
+             border: 1px solid #222;
+            }
+        }
+        
+        // .Notification_Dropdown_list:after{
+        //     position: absolute;
+        //     top: -6px;
+        //     right: 0;
+        //     display: inline-block !important;
+        //     border-right: 6px solid transparent;
+        //     border-bottom: 6px solid #fff;
+        //     border-left: 6px solid transparent;
+        //     content: '';
+        //     }
+        }
+        
+    }
+    .messages {
+        width: 300px;
+        .media {
+            border-bottom: 1px solid #ddd;
+            padding: 5px 10px;
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+        .media-body {
+            h5 {
+                font-size: 13px;
+                font-weight: 600;
+            }
+            .small {
+                margin: 0;
+            }
+            .last {
+                font-size: 12px;
+                margin: 0;
+            }
+        }
+    }
+   
